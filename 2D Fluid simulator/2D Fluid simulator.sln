@@ -1,0 +1,23 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{9F877FC7-CBAD-483E-F2E1-059D9A061975}") = "2D Fluid simulator", "Assembly-CSharp.csproj", "{47400E0B-7070-4382-97CA-07F986F6CC97}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{47400E0B-7070-4382-97CA-07F986F6CC97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47400E0B-7070-4382-97CA-07F986F6CC97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47400E0B-7070-4382-97CA-07F986F6CC97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47400E0B-7070-4382-97CA-07F986F6CC97}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
