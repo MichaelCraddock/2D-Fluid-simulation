@@ -40,6 +40,28 @@ public class Watermanager : MonoBehaviour {
 	
 	}
 
+    public void Splosh(float xposi, float velocity)
+    {
+        if (xposi >= xPos[0] && xposi <= xPos[xPos.Length - 1])
+        {
+            xposi -= xPos[0];
+            int index = Mathf.RoundToInt((xPos.Length - 1) * (xposi / (xPos[xPos.Length - 1] - xPos[0])));
+            veloc[index] = velocity;
+
+            float lifetime = 0.93f + Mathf.Abs(velocity) * 0.07f;
+            splash.GetComponent<ParticleSystem>().startSpeed = 8 + 2 * Mathf.Pow(Mathf.Abs(velocity), 0.5f);
+            splash.GetComponent<ParticleSystem>().startSpeed = 9 + 2 * Mathf.Pow(Mathf.Abs(velocity), 0.5f);
+            splash.GetComponent<ParticleSystem>().startLifetime = lifetime;
+
+            Vector3 position = new Vector3(xPos[index], yPos[index] - 0.3f, 5);
+            Quaternion rotation = Quaternion.LookRotation(new Vector3(xPos[Mathf.FloorToInt(xPos.Length / 2)], baseheight + 8, 5) - position);
+
+            GameObject splish = Instantiate(splash, position, rotation) as GameObject;
+            Destroy(splish, lifetime + 0.3f);
+        }
+
+    } 
+
     public void Spawnwater(float Left, float width, float top, float bottom)
 {
         int edgecount = Mathf.RoundToInt(width) * 5;
