@@ -25,7 +25,7 @@ public class Watermanager : MonoBehaviour {
     //the properties of the water
     float baseheight;
     float left;
-    float bot;
+    float bottom;
 
     // Particles
     public GameObject splash;
@@ -62,8 +62,13 @@ public class Watermanager : MonoBehaviour {
 
     } 
 
-    public void Spawnwater(float Left, float width, float top, float bottom)
+    public void Spawnwater(float Left, float width, float top, float Bottom)
 {
+        gameObject.AddComponent<BoxCollider2D>();
+        gameObject.GetComponent<BoxCollider2D>().offset = new Vector2(Left + width / 2, (top + Bottom) / 2);
+        gameObject.GetComponent<BoxCollider2D>().size = new Vector2(width, top - Bottom);
+        gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+
         int edgecount = Mathf.RoundToInt(width) * 5;
         int nodecount = edgecount + 1;
 
@@ -83,7 +88,7 @@ public class Watermanager : MonoBehaviour {
         Col = new GameObject[edgecount];
 
         baseheight = top;
-        bot = bottom;
+        bottom = Bottom;
         left = Left;
 
         for (int i = 0; i < nodecount; i++)
@@ -92,7 +97,7 @@ public class Watermanager : MonoBehaviour {
             xPos[i] = Left + width * i / edgecount;
             accel[i] = 0;
             veloc[i] = 0;
-            Body.SetPosition(i, new Vector3(xPos[i], yPos[i], z));
+            Body.SetPosition(i, new Vector3(xPos[i], top, z));
         }
 
         for (int i = 0; i < edgecount; i++)
@@ -125,8 +130,10 @@ public class Watermanager : MonoBehaviour {
             Col[i].name = "Trigger";
             Col[i].AddComponent<BoxCollider2D>();
             Col[i].transform.parent = transform;
+
             Col[i].transform.position = new Vector3(Left + width * (i + 0.5f) / edgecount, top - 0.5f, 0);
             Col[i].transform.localScale = new Vector3(width / edgecount, 1, 1);
+
             Col[i].GetComponent<BoxCollider2D>().isTrigger = true;
             Col[i].AddComponent<WaterDetector>();
             
@@ -143,8 +150,8 @@ public class Watermanager : MonoBehaviour {
             Vector3[] Vertices = new Vector3[4];
             Vertices[0] = new Vector3(xPos[i], yPos[i], z);
             Vertices[1] = new Vector3(xPos[i + 1], yPos[i + 1], z);
-            Vertices[2] = new Vector3(xPos[i], bot, z);
-            Vertices[3] = new Vector3(xPos[i + 1], bot, z);
+            Vertices[2] = new Vector3(xPos[i], bottom, z);
+            Vertices[3] = new Vector3(xPos[i + 1], bottom, z);
 
             meshes[i].vertices = Vertices;
         }
@@ -194,6 +201,7 @@ public class Watermanager : MonoBehaviour {
                 }
             }
         }
+        Updatemesh();
 
     }
 }

@@ -3,8 +3,7 @@ using System.Collections;
 
 public class WaterDetector : MonoBehaviour {
 
-	// Use this for initialization
-	void OnTriggerEnter2d(Collider2D Hit)
+	void OnTriggerEnter2D(Collider2D Hit)
     {
         if (Hit.GetComponent<Rigidbody2D>() != null)
         {
