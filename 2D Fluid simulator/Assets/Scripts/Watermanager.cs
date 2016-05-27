@@ -202,4 +202,9 @@ public class Watermanager : MonoBehaviour {
         Updatemesh();
 
     }
+
+    void OnTriggerStay2D(Collider2D Hit)
+    {
+       //possible floating script
+    }
 }
