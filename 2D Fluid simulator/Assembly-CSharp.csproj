@@ -45,8 +45,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Spawnitems.cs" />
+     <Compile Include="Assets\Scripts\WaterDetector.cs" />
      <Compile Include="Assets\Scripts\Watermanager.cs" />
-     <Compile Include="Assets\Scripts\waterdetector.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

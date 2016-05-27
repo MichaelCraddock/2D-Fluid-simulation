@@ -37,7 +37,7 @@ public class Watermanager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+        Spawnwater(-10, 20, 0, -3);
 	}
 
     public void Splosh(float xposi, float velocity)
@@ -128,6 +128,7 @@ public class Watermanager : MonoBehaviour {
             Col[i].transform.position = new Vector3(Left + width * (i + 0.5f) / edgecount, top - 0.5f, 0);
             Col[i].transform.localScale = new Vector3(width / edgecount, 1, 1);
             Col[i].GetComponent<BoxCollider2D>().isTrigger = true;
+            Col[i].AddComponent<WaterDetector>();
             
 
 
