@@ -95,9 +95,10 @@ public class Watermanager : MonoBehaviour {
         {
             yPos[i] = top;
             xPos[i] = Left + width * i / edgecount;
+            Body.SetPosition(i, new Vector3(xPos[i], top, z));
             accel[i] = 0;
             veloc[i] = 0;
-            Body.SetPosition(i, new Vector3(xPos[i], top, z));
+            
         }
 
         for (int i = 0; i < edgecount; i++)
@@ -158,7 +159,7 @@ public class Watermanager : MonoBehaviour {
 	
 	}
 
-    void Fixedupdate()
+    void FixedUpdate()
     {
         for (int i = 0; i < xPos.Length; i++)
         {
@@ -192,13 +193,10 @@ public class Watermanager : MonoBehaviour {
             for (int i = 0; i < xPos.Length; i++)
             {
                 if (i > 0)
-                {
-                    yPos[i - 1] += leftDeltas[i];
-                }
+                     yPos[i - 1] += leftDeltas[i];
                 if ( i < xPos.Length - 1)
-                {
-                    yPos[i + 1] += rightDeltas[i];
-                }
+                     yPos[i + 1] += rightDeltas[i];
+                
             }
         }
         Updatemesh();
