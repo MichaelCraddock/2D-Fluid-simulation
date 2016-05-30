@@ -64,10 +64,6 @@ public class Watermanager : MonoBehaviour {
 
     public void Spawnwater(float Left, float width, float top, float Bottom)
 {
-        gameObject.AddComponent<BoxCollider2D>();
-        gameObject.GetComponent<BoxCollider2D>().offset = new Vector2(Left + width / 2, (top + Bottom) / 2);
-        gameObject.GetComponent<BoxCollider2D>().size = new Vector2(width, top - Bottom);
-        gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
 
         int edgecount = Mathf.RoundToInt(width) * 5;
         int nodecount = edgecount + 1;
@@ -203,8 +199,5 @@ public class Watermanager : MonoBehaviour {
 
     }
 
-    void OnTriggerStay2D(Collider2D Hit)
-    {
-       //possible floating script
-    }
+
 }
